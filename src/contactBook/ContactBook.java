@@ -55,6 +55,14 @@ public class ContactBook {
         contacts[searchIndex(name)].setPhone(phone);
     }
 
+    public String getNumber(int phone) {
+        int aux = searchPerson(phone);
+        if(aux == -1)
+            return null;
+        else
+            return contacts[aux].getName();
+
+    }
     //Pre: name != null && hasContact(name)
     public void setEmail(String name, String email) {
         contacts[searchIndex(name)].setEmail(email);
@@ -66,6 +74,18 @@ public class ContactBook {
         boolean found = false;
         while (i<counter && !found)
             if (contacts[i].getName().equals(name))
+                found = true;
+            else
+                i++;
+        if (found) result = i;
+        return result;
+    }
+    private int searchPerson(int phone) {
+        int i = 0;
+        int result = -1;
+        boolean found = false;
+        while (i<counter && !found)
+            if (contacts[i].getPhone() == phone)
                 found = true;
             else
                 i++;
@@ -91,6 +111,18 @@ public class ContactBook {
     //Pre: hasNext()
     public Contact next() {
         return contacts[currentContact++];
+    }
+
+    public boolean contactsWithSameNumber(int phone){
+        int timesPhoneAppears = 0;
+        for (int i=0;i<counter; i++) {
+            if (contacts[i].getPhone() == phone)
+                timesPhoneAppears++;
+        }
+        if (timesPhoneAppears >= 2)
+            return true;
+        else    return false;
+
     }
 
 }
