@@ -78,16 +78,17 @@ public class Main {
             System.out.println("There are contacts that share phone numbers.");
 
         else
-            System.out.println("All contacts have different phone numbers");
+            System.out.println("All contacts have different phone numbers.");
 
     }
     private static void getContact (Scanner in, ContactBook cBook){
         int phone = in.nextInt();
-
-        if(cBook.searchPerson(phone)<0)
+            in.nextLine();
+        String person = cBook.getNumber(phone);
+        if(person == null)
             System.out.println("Phone number does not exist.");
         else
-            System.out.println(cBook.getNumber(phone));
+            System.out.println(person);
     }
 
     private static String getCommand(Scanner in) {
