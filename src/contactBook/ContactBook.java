@@ -113,16 +113,20 @@ public class ContactBook {
         return contacts[currentContact++];
     }
 
-    public boolean contactsWithSameNumber(int phone){
-        int timesPhoneAppears = 0;
-        for (int i=0;i<counter; i++) {
-            if (contacts[i].getPhone() == phone)
-                timesPhoneAppears++;
-        }
-        if (timesPhoneAppears >= 2)
-            return true;
-        else    return false;
+    public boolean contactWithSameNumber(int phone){
+        int numberOfTimesPhoneAppears = 0;
+        int j = 0;
+        for (j=0;j<counter; j++)
+            if (contacts[j].getPhone() == phone) {
+                numberOfTimesPhoneAppears++;
+            }
+        return (numberOfTimesPhoneAppears >= 2); }
 
-    }
+
+
+
+
+
+
 
 }
