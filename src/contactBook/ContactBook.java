@@ -80,7 +80,7 @@ public class ContactBook {
         if (found) result = i;
         return result;
     }
-    private int searchPerson(int phone) {
+    public int searchPerson(int phone) {
         int i = 0;
         int result = -1;
         boolean found = false;
@@ -113,16 +113,18 @@ public class ContactBook {
         return contacts[currentContact++];
     }
 
-    public boolean contactWithSameNumber(int phone){
-        int numberOfTimesPhoneAppears = 0;
-        int j = 0;
-        for (j=0;j<counter; j++)
-            if (contacts[j].getPhone() == phone) {
-                numberOfTimesPhoneAppears++;
-            }
-        return (numberOfTimesPhoneAppears >= 2); }
 
+    public boolean contactsWithSameNumber(){
 
+        for(int i = 0; i < counter ; i++)
+            for (int j = i+1; j< counter; j++){
+                if(contacts[i].getPhone() == contacts[j].getPhone())
+                    return true;
+        }
+
+        return false;
+
+    }
 
 
 
